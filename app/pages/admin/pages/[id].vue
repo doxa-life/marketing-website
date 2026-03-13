@@ -5,7 +5,12 @@
       <h1 class="text-2xl font-bold">Edit Page</h1>
     </div>
 
-    <UCard v-if="page">
+    <div v-if="status === 'pending'" class="flex items-center justify-center py-12">
+      <UIcon name="i-lucide-loader" class="w-6 h-6 animate-spin" />
+      <span class="ml-2">Loading...</span>
+    </div>
+
+    <UCard v-else-if="page">
       <form @submit.prevent="handleSave" class="space-y-6">
         <UFormField label="Title" name="title" required>
           <UInput v-model="form.title" placeholder="Page title" class="w-full" />
@@ -35,13 +40,13 @@
 
         <UFormField label="Content" name="content">
           <RichTextEditor
-            v-model="form.content_json"
+            v-model="editorContent"
             @update:html="form.content_html = $event"
           />
         </UFormField>
 
         <div class="flex justify-end gap-3">
-          <UButton to="/admin/pages" variant="outline">Cancel</UButton>
+          <UButton to="/admin/pages" color="neutral" variant="outline">Cancel</UButton>
           <UButton type="submit" color="primary" :loading="saving">Save Changes</UButton>
         </div>
       </form>
@@ -66,7 +71,7 @@ const route = useRoute()
 const toast = useToast()
 const saving = ref(false)
 
-const { data: page, status } = await useFetch<any>(`/api/admin/pages/${route.params.id}`)
+const { data: page, status } = useLazyFetch<any>(`/api/admin/pages/${route.params.id}`)
 
 const form = reactive({
   title: '',
@@ -79,6 +84,8 @@ const form = reactive({
   content_html: '',
 })
 
+const editorContent = ref<any>(null)
+
 watch(page, (p) => {
   if (p) {
     form.title = p.title || ''
@@ -89,8 +96,17 @@ watch(page, (p) => {
     form.featured_image = p.featured_image || ''
     form.content_json = p.content_json || null
     form.content_html = p.content_html || ''
+    let json = p.content_json
+    if (typeof json === 'string') {
+      try { json = JSON.parse(json) } catch {}
+    }
+    editorContent.value = json || p.content_html || null
   }
 }, { immediate: true })
+
+watch(editorContent, (val) => {
+  form.content_json = val
+})
 
 async function handleSave() {
   if (!form.title || !form.slug) {

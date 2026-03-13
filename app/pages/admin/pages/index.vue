@@ -60,7 +60,7 @@ definePageMeta({
 
 const toast = useToast()
 
-const { data: pages, status, refresh } = await useFetch('/api/admin/pages')
+const { data: pages, status, refresh } = useLazyFetch('/api/admin/pages')
 
 const columns = [
   { accessorKey: 'title', header: 'Title' },

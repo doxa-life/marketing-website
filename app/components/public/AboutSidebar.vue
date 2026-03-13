@@ -11,36 +11,12 @@
             {{ $t('nav.about') }}
           </NuxtLink>
         </li>
-        <li>
+        <li v-for="child in children" :key="child.slug">
           <NuxtLink
-            :to="localePath('/about/vision')"
-            :class="{ 'current-link': currentSlug === 'vision' }"
+            :to="localePath(`/about/${child.slug}`)"
+            :class="{ 'current-link': currentSlug === child.slug }"
           >
-            Vision
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            :to="localePath('/about/documents')"
-            :class="{ 'current-link': currentSlug === 'documents' }"
-          >
-            Documents
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            :to="localePath('/about/definitions')"
-            :class="{ 'current-link': currentSlug === 'definitions' }"
-          >
-            Definitions
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            :to="localePath('/about/statement-of-faith')"
-            :class="{ 'current-link': currentSlug === 'statement-of-faith' }"
-          >
-            Statement of Faith
+            {{ child.title }}
           </NuxtLink>
         </li>
       </ul>
@@ -50,8 +26,15 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath()
+const { locale } = useI18n()
 
 defineProps<{
   currentSlug: string
 }>()
+
+const { data } = await useFetch('/api/pages/about', {
+  query: { language: locale.value }
+})
+
+const children = computed(() => data.value?.siblings || [])
 </script>

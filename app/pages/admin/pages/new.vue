@@ -41,7 +41,7 @@
         </UFormField>
 
         <div class="flex justify-end gap-3">
-          <UButton to="/admin/pages" variant="outline">Cancel</UButton>
+          <UButton to="/admin/pages" color="neutral" variant="outline">Cancel</UButton>
           <UButton type="submit" color="primary" :loading="saving">Create Page</UButton>
         </div>
       </form>

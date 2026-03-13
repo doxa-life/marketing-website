@@ -11,6 +11,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1008.0",
+    "@aws-sdk/client-ses": "^3.1008.0",
+    "@aws-sdk/s3-request-presigner": "^3.1008.0",
     "@iconify-json/lucide": "^1.2.73",
     "@nuxt/icon": "^2.1.0",
     "@nuxt/ui": "^4.3.0",

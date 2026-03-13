@@ -54,7 +54,7 @@ definePageMeta({
   middleware: 'admin',
 })
 
-const { data: pages } = await useFetch('/api/admin/pages')
+const { data: pages } = useLazyFetch('/api/admin/pages')
 
 const pageCount = computed(() => pages.value?.length || 0)
 

@@ -23,7 +23,11 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'stylesheet', href: '/fonts/BebasNeue/stylesheet.css' },
+        { rel: 'stylesheet', href: '/fonts/Brandon_Grotesque/stylesheet.css' },
+        { rel: 'stylesheet', href: '/fonts/Poppins/stylesheet.css' },
+        { rel: 'stylesheet', href: '/fonts/BebasKai/stylesheet.css' }
       ]
     }
   },

@@ -2,6 +2,7 @@
   <div class="rich-text-editor">
     <div v-if="editor" class="toolbar">
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-heading-2"
@@ -9,6 +10,7 @@
         @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
       />
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-heading-3"
@@ -19,6 +21,7 @@
       <div class="toolbar-divider" />
 
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-bold"
@@ -26,6 +29,7 @@
         @click="editor.chain().focus().toggleBold().run()"
       />
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-italic"
@@ -36,6 +40,7 @@
       <div class="toolbar-divider" />
 
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-list"
@@ -43,6 +48,7 @@
         @click="editor.chain().focus().toggleBulletList().run()"
       />
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-list-ordered"
@@ -53,6 +59,7 @@
       <div class="toolbar-divider" />
 
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-link"
@@ -60,10 +67,22 @@
         @click="setLink"
       />
       <UButton
+        color="neutral"
         variant="ghost"
         size="xs"
         icon="i-lucide-image"
         @click="addImage"
+      />
+
+      <div class="toolbar-divider" />
+
+      <UButton
+        color="neutral"
+        variant="ghost"
+        size="xs"
+        icon="i-lucide-book-open"
+        :class="{ 'is-active': editor.isActive('verse') }"
+        @click="editor.chain().focus().toggleVerse().run()"
       />
     </div>
 
@@ -76,6 +95,7 @@ import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
+import { Verse } from '~/extensions/verse'
 
 const props = defineProps<{
   modelValue?: any
@@ -98,6 +118,7 @@ const editor = useEditor({
       openOnClick: false,
     }),
     Image,
+    Verse,
   ],
   onUpdate: ({ editor }) => {
     emit('update:modelValue', editor.getJSON())
@@ -155,7 +176,8 @@ onBeforeUnmount(() => {
   gap: 0.25rem;
   padding: 0.5rem;
   border-bottom: 1px solid var(--ui-border);
-  background-color: var(--ui-bg-elevated);
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
   flex-wrap: wrap;
 }
 
@@ -167,7 +189,7 @@ onBeforeUnmount(() => {
 }
 
 .toolbar :deep(.is-active) {
-  background-color: var(--ui-bg);
+  background-color: var(--ui-bg-elevated);
 }
 
 .editor-content {

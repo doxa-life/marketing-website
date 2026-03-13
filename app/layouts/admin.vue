@@ -59,10 +59,15 @@ const { user, logout } = useAuth()
 const route = useRoute()
 const sidebarOpen = ref(false)
 
+useHead({
+  htmlAttrs: { class: 'admin' }
+})
+
 watch(() => route.path, () => {
   sidebarOpen.value = false
 })
 </script>
+
 
 <style scoped>
 .admin-layout {

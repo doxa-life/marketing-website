@@ -1,3 +1,5 @@
+html:not(.admin) {
+
 textarea,
 select,
 input {
@@ -35,19 +37,6 @@ select:required:invalid {
 }
 select option {
     color: black;
-}
-
-.form-control {
-    line-height: var(--line-height-none);
-    display: grid;
-    grid-template-columns: 1em auto;
-    align-items: center;
-    gap: var(--spacing-md);
-
-    & label {
-        font-size: 1em;
-        max-width: 60ch;
-    }
 }
 
 [type=checkbox], [type=file], [type=radio] {
@@ -110,6 +99,25 @@ input[type=radio] {
         box-shadow: inset 1em 1em var(--color-brand-primary-darker);
     }
 }
+input[type=search] {
+    text-indent: 1.5em;
+}
+
+} // end html:not(.admin)
+
+.form-control {
+    line-height: var(--line-height-none);
+    display: grid;
+    grid-template-columns: 1em auto;
+    align-items: center;
+    gap: var(--spacing-md);
+
+    & label {
+        font-size: 1em;
+        max-width: 60ch;
+    }
+}
+
 .search-box {
     position: relative;
     width: 100%;
@@ -123,9 +131,6 @@ input[type=radio] {
     width: 1em;
     height: 1em;
     fill: var(--color-brand-secondary-light);
-}
-input[type=search] {
-    text-indent: 1.5em;
 }
 
 .contact-message {

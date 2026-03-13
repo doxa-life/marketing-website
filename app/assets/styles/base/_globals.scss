@@ -2,12 +2,12 @@
 // Imports semantic tokens (which export CSS custom properties)
 // Sets up base typography and body styles
 
-html {
+html:not(.admin) {
   font-size: var(--font-size-base);
   scrollbar-gutter: stable;
 }
 
-body {
+html:not(.admin) body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
@@ -16,20 +16,12 @@ body {
   background-color: var(--color-surface-default);
 }
 
+html:not(.admin) {
+
 section {
   padding-top: var(--spacing-4xl);
   padding-top: clamp(var(--spacing-2xl), 6vw, var(--spacing-4xl));
   padding-bottom: var(--spacing-4xl);
-}
-
-.page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-.page-content {
-  margin-top: var(--spacing-3xl);
-  margin-bottom: var(--spacing-4xl);
 }
 
 h1, h2, h3, h4 {
@@ -66,23 +58,11 @@ h5, .h5 {
   font-size: var(--font-size-lg);
 }
 
-.subtext {
-  font-family: var(--font-family-base);
-  font-size: clamp(var(--font-size-md), 2vw, var(--font-size-lg));
-  font-weight: var(--font-weight-medium);
-}
-
 img {
   max-width: 100%;
   height: auto;
   border-radius: var(--border-radius-lg);
   object-fit: cover;
-}
-
-.bg-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 table {
@@ -174,6 +154,30 @@ strong {
 td {
   border: 1px solid var(--table-border-color);
   border-spacing: 0;
+}
+
+} // end html:not(.admin)
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.page-content {
+  margin-top: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
+}
+
+.subtext {
+  font-family: var(--font-family-base);
+  font-size: clamp(var(--font-size-md), 2vw, var(--font-size-lg));
+  font-weight: var(--font-weight-medium);
+}
+
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .page-body > * {
