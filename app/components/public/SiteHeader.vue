@@ -100,7 +100,7 @@ watch(() => route.fullPath, () => {
             <li v-for="lang in ENABLED_LANGUAGES" :key="lang.code">
               <NuxtLink
                 :to="switchLocalePath(lang.code)"
-                @click="closeMenu"
+                               @click="closeMenu"
               >
                 <span class="lang-flag">{{ lang.flag }}</span>
                 {{ lang.nativeName }}
@@ -148,7 +148,7 @@ watch(() => route.fullPath, () => {
                     <li v-for="lang in ENABLED_LANGUAGES" :key="lang.code">
                       <NuxtLink
                         :to="switchLocalePath(lang.code)"
-                        @click="closeLangDropdown"
+                                               @click="closeLangDropdown"
                       >
                         <span class="lang-flag">{{ lang.flag }}</span>
                         {{ lang.nativeName }}
@@ -177,6 +177,15 @@ watch(() => route.fullPath, () => {
 </template>
 
 <style lang="scss" scoped>
+.main-navigation a {
+  color: var(--color-text-on-brand-light);
+  text-decoration: none;
+}
+
+.main-navigation a:hover {
+  color: var(--color-brand-secondary);
+}
+
 .lang-switcher {
   position: relative;
 }

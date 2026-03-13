@@ -158,6 +158,28 @@ td {
 
 } // end html:not(.admin)
 
+// Default link styling — wrapped in :where() for low specificity so that
+// .button, scoped component styles, and footer styles can all override it.
+:where(html:not(.admin)) :where(a) {
+  text-decoration: none;
+  color: var(--color-brand-light);
+  font-weight: var(--font-weight-medium);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--color-brand-lighter);
+    text-decoration: underline;
+  }
+
+  &.light-link {
+    color: var(--color-brand-secondary);
+
+    &:hover {
+      color: var(--color-brand-secondary-light);
+    }
+  }
+}
+
 .page {
   display: flex;
   flex-direction: column;

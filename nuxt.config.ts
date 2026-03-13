@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   ssr: true,
   devServer: { port: 3200 },
 
-  css: ['~/assets/styles/main.scss'],
+  css: ['~/assets/css/theme.css', '~/assets/styles/main.scss'],
 
   app: {
     head: {

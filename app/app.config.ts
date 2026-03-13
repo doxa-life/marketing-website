@@ -1,8 +1,16 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: 'blue',
-      neutral: 'slate'
+      primary: 'forest',
+      neutral: 'beige'
+    },
+    link: {
+      variants: {
+        active: {
+          true: '',
+          false: ''
+        }
+      }
     }
   }
 })

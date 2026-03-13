@@ -19,6 +19,14 @@
         justify-content: center;
     }
 
+    a:not(.button) {
+        color: var(--color-text-on-brand-light);
+
+        &:hover {
+            color: var(--color-brand-secondary);
+        }
+    }
+
     .footer__description {
         h3 {
             font-weight: var(--font-weight-regular);
