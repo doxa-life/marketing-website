@@ -6,7 +6,7 @@
     z-index: 1500;
 }
 .logo {
-    border-radius: 0;
+    border-radius: 0 !important;
     width: clamp(180px, 38vw, 200px);
 }
 .site-branding {

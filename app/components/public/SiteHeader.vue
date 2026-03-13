@@ -203,12 +203,12 @@ watch(() => route.fullPath, () => {
 }
 
 .lang-flag {
-  font-size: 1.75rem;
+  font-size: 3rem;
   line-height: 1;
 }
 
 .lang-arrow {
-  font-size: 0.5rem;
+  font-size: 1rem;
   opacity: 0.7;
 }
 
